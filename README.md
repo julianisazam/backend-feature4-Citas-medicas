@@ -1,0 +1,1 @@
+Este repositorio contiene el backend del Módulo 4: Gestión de Consultorios para la plataforma CITASalud, desarrollado bajo una arquitectura de microservicios con Spring Boot y GraphQL. El sistema permite administrar la asignación, disponibilidad y mantenimiento de consultorios médicos por sede, garantizando un control eficiente de los recursos físicos en instituciones de salud.
