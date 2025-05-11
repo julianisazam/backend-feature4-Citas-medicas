@@ -24,6 +24,7 @@ public class Consultorio {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_consultorio", length = 20)
+    @ManyToOne
     private TipoConsultorio tipoConsultorio;
 
     @JoinColumn(name = "sede_id")
@@ -32,6 +33,7 @@ public class Consultorio {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado")
+    @ManyToOne
     private EstadoConsultorio estado;
 
 
