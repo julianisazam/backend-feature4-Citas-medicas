@@ -1,7 +1,5 @@
 package com.feature4.consultingroom_service.model;
 
-import com.feature4.consultingroom_service.enums.EstadoConsultorio;
-import com.feature4.consultingroom_service.enums.TipoConsultorio;
 import jakarta.persistence.*;
 import lombok.*;
 
