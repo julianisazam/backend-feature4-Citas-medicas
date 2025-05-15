@@ -22,7 +22,6 @@ public class Consultorio {
     @Column(name = "numero_consultorio", length = 10)
     private String numeroConsultorio;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_consultorio", length = 20)
     @ManyToOne
     private TipoConsultorio tipoConsultorio;
@@ -31,7 +30,6 @@ public class Consultorio {
     @ManyToOne
     private Sede sedeId;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "estado")
     @ManyToOne
     private EstadoConsultorio estado;
