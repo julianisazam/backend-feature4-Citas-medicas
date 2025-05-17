@@ -22,7 +22,7 @@ public class Consultorio {
     @Column(name = "numero_consultorio", length = 10)
     private String numeroConsultorio;
 
-    @Column(name = "tipo_consultorio", length = 20)
+    @JoinColumn(name = "tipo_consultorio_id")
     @ManyToOne
     private TipoConsultorio tipoConsultorio;
 
@@ -30,7 +30,7 @@ public class Consultorio {
     @ManyToOne
     private Sede sedeId;
 
-    @Column(name = "estado")
+    @JoinColumn(name = "estado_id")
     @ManyToOne
     private EstadoConsultorio estado;
 

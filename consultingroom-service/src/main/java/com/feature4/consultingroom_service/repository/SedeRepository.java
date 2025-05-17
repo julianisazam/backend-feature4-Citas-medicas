@@ -3,5 +3,5 @@ package com.feature4.consultingroom_service.repository;
 import com.feature4.consultingroom_service.model.EstadoConsultorio;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface Sede extends JpaRepository<EstadoConsultorio, Long> {
+public interface SedeRepository extends JpaRepository<EstadoConsultorio, Long> {
 }

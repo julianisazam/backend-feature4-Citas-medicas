@@ -1,0 +1,27 @@
+type Consultorio {
+    id: ID!
+    numeroConsultorio: String
+    tipoConsultorio: TipoConsultorio
+    sedeId: Sede
+    estado: EstadoConsultorio
+}
+
+type Query {
+    getAllConsultorios: [Consultorio]
+    getConsultorioById(id: ID!): Consultorio
+}
+
+type TipoConsultorio {
+    id: ID!
+    nombre: String
+}
+
+type Sede {
+    id: ID!
+    nombre: String
+}
+
+type EstadoConsultorio {
+    id: ID!
+    nombre: String
+}
