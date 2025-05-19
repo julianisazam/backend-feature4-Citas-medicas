@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -43,7 +44,7 @@ public class ConsultorioService {
 
         return consultorios.stream()
                 .map(this::toResponseDto)
-                .toList();
+                .collect(Collectors.toList());
     }
 
 
@@ -62,5 +63,45 @@ public class ConsultorioService {
         nuevoConsultorio.setSedeId(sede);
         Consultorio consultorioGuardado = consultorioRepository.save(nuevoConsultorio);
         return toResponseDto(consultorioGuardado);
+    }
+
+    public String updateConsultorio(Long id, CreateConsultorioDto consultorio) {
+        Consultorio consultorioExistente = consultorioRepository.findById(id).orElse(null);
+        if (consultorioExistente != null) {
+            TipoConsultorio tipoConsultorio = new TipoConsultorio();
+            tipoConsultorio.setId(consultorio.tipoConsultorio_id());
+            EstadoConsultorio estadoConsultorio = new EstadoConsultorio();
+            estadoConsultorio.setId(consultorio.estado_id());
+            Sede sede = new Sede();
+            sede.setId(consultorio.sede_id());
+            consultorioExistente.setNumeroConsultorio(consultorio.numeroConsultorio());
+            consultorioExistente.setTipoConsultorio(tipoConsultorio);
+            consultorioExistente.setEstado(estadoConsultorio);
+            consultorioExistente.setSedeId(sede);
+            consultorioRepository.save(consultorioExistente);
+            return "Consultorio actualizado con ID: " + id;
+        } else {
+            return "Consultorio no encontrado con ID: " + id;
+        }
+    }
+
+    public String deleteConsultorio(Long id) {
+        Consultorio consultorioExistente = consultorioRepository.findById(id).orElse(null);
+        if (consultorioExistente != null) {
+            consultorioRepository.delete(consultorioExistente);
+            return "Consultorio eliminado con ID: " + id;
+        } else {
+            return "Consultorio no encontrado con ID: " + id;
+        }
+    }
+
+    public ConsultorioResponseDTO getConsultorioById(Long id) {
+
+        Consultorio consultorio = consultorioRepository.findById(id).orElse(null);
+        if (consultorio != null) {
+            return toResponseDto(consultorio);
+        } else {
+            return null; // O lanzar una excepción si lo prefieres
+        }
     }
 }

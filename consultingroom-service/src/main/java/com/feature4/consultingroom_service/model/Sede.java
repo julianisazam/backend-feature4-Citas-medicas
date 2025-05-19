@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Sede {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "nombre_sede", length = 50)
     private String nombre;

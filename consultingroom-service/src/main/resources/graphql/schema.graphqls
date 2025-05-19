@@ -1,9 +1,10 @@
 type Consultorio {
-    id: ID!
-    numeroConsultorio: String
-    tipoConsultorio: TipoConsultorio
-    sedeId: Sede
-    estado: EstadoConsultorio
+    id_consultorio: ID!
+    numero_consultorio: String
+    tipo: String
+    estado: String
+    sede: String
+    ciudad: String
 }
 
 type Query {

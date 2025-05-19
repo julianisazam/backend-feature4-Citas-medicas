@@ -20,11 +20,11 @@ public class ConsultorioRestController {
 
     @PutMapping("/{id}")
     public String updateConsultorio(@PathVariable("id") Long id, @RequestBody CreateConsultorioDto consultorio) {
-        return "Consultorio actualizado con ID: " + id + ", nuevo valor: " + consultorio;
+        return consultorioService.updateConsultorio(id, consultorio);
     }
 
     @DeleteMapping("/{id}")
     public String deleteConsultorio(@PathVariable("id") Long id) {
-        return "Consultorio eliminado con ID: " + id;
+        return consultorioService.deleteConsultorio(id);
     }
 }
