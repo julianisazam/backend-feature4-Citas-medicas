@@ -14,7 +14,7 @@ import java.util.List;
 public class ConsultorioGraphController {
     private final ConsultorioService consultorioService;
 
-    @QueryMapping
+    @QueryMapping("getAllConsultorios")
     public List<ConsultorioResponseDTO> getAllConsultorios() {
         return consultorioService.getAllConsultorios();
     }

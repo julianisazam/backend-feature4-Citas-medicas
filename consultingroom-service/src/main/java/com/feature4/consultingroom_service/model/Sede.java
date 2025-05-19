@@ -1,9 +1,6 @@
 package com.feature4.consultingroom_service.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +13,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Sede {
     @Id
-    private Long id;
+    @GeneratedValue
+    private Integer id;
     @Column(name = "nombre_sede", length = 50)
     private String nombre;
     @ManyToOne
