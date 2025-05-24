@@ -1,4 +1,7 @@
 spring:
+  mvc:
+    path match:
+      matching-strategy: ant_path_matcher
   graphql:
     graphiql:
       enabled: true

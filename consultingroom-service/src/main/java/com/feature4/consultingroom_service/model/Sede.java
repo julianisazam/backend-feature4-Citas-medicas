@@ -17,6 +17,7 @@ public class Sede {
     private Integer id;
     @Column(name = "nombre_sede", length = 50)
     private String nombre;
+    @JoinColumn(name = "ciudad_id")
     @ManyToOne
     private Ciudad ciudad;
 
