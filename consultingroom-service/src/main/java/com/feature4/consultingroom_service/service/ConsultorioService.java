@@ -8,7 +8,9 @@ import com.feature4.consultingroom_service.model.Sede;
 import com.feature4.consultingroom_service.model.TipoConsultorio;
 import com.feature4.consultingroom_service.repository.ConsultorioRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,14 +58,14 @@ public class ConsultorioService {
     }
 
     public List<ConsultorioResponseDTO> getAllConsultorios() {
-        List<Consultorio> consultorios = consultorioRepository.findAll();
+        List<Consultorio> consultorios = consultorioRepository.findAllWithRelations();
 
         return consultorios.stream()
                 .map(this::toResponseDto)
                 .collect(Collectors.toList());
     }
 
-    public ConsultorioResponseDTO getConsultorioById2(Long id) {
+    public ConsultorioResponseDTO getConsultorioById(Long id) {
         return consultorioRepository.findByIdWithRelations(id)
                 .map(this::toResponseDto)
                 .orElse(null);
@@ -72,8 +74,10 @@ public class ConsultorioService {
     public ConsultorioResponseDTO createConsultorio(CreateConsultorioDto consultorio) {
         if (consultorioRepository.existsByNumeroConsultorioAndSedeId_Id(
                 consultorio.numeroConsultorio(), Long.valueOf(consultorio.sede_id()))) {
-            throw new IllegalStateException("Ya existe un consultorio con el número " +
-                    consultorio.numeroConsultorio() + " en esta sede");
+            throw new ResponseStatusException(
+                    HttpStatus.CONFLICT,
+                    "Ya existe un consultorio con el número " + consultorio.numeroConsultorio() + " en esta sede"
+            );
         }
 
         TipoConsultorio tipoConsultorio = new TipoConsultorio();
@@ -88,7 +92,7 @@ public class ConsultorioService {
         nuevoConsultorio.setEstado(estadoConsultorio);
         nuevoConsultorio.setSedeId(sede);
         Consultorio consultorioGuardado = consultorioRepository.save(nuevoConsultorio);
-        return getConsultorioById2(consultorioGuardado.getId());
+        return getConsultorioById(consultorioGuardado.getId());
     }
 
     public String updateConsultorio(Long id, CreateConsultorioDto consultorio) {
@@ -121,13 +125,5 @@ public class ConsultorioService {
         }
     }
 
-    public ConsultorioResponseDTO getConsultorioById(Long id) {
 
-        Consultorio consultorio = consultorioRepository.findById(id).orElse(null);
-        if (consultorio != null) {
-            return toResponseDto(consultorio);
-        } else {
-            return null; // O lanzar una excepción si lo prefieres
-        }
-    }
 }
