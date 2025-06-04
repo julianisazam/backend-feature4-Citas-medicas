@@ -34,4 +34,4 @@ pie
     "GraphQL" : 25
     "PostgreSQL" : 20
     "Docker" : 15
-    "RabbitMQ" : 5
+    "Kafka" : 5
