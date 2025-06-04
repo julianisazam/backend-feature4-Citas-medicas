@@ -1,13 +1,12 @@
 FROM maven:3.8-openjdk-17 as builder
 
-# Copia primero el POM padre
 WORKDIR /app
-COPY ../pom.xml .
+# Copia primero el POM padre (asumiendo que estás ejecutando docker build desde el directorio raíz del proyecto)
+COPY pom.xml /app/
 
-# Copia el módulo del servicio
-WORKDIR /app/maintenance-alerts-service
-COPY ./maintenance-alerts-service/pom.xml .
-COPY ./maintenance-alerts-service/src ./src
+# Copia el código del servicio
+COPY maintenance-alerts-service/pom.xml /app/maintenance-alerts-service/
+COPY maintenance-alerts-service/src /app/maintenance-alerts-service/src/
 
 # Compila el proyecto
 RUN cd /app && mvn clean package -DskipTests -pl maintenance-alerts-service
