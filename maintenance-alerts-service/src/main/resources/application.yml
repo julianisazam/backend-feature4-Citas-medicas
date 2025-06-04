@@ -1,6 +1,6 @@
 spring:
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
     consumer:
       group-id: notification-group
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -15,9 +15,9 @@ spring:
       enabled: true
     path: /graphql
   datasource:
-    url: jdbc:postgresql://localhost:5432/feature4
-    username: postgres
-    password: root
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
