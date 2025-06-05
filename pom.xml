@@ -36,6 +36,7 @@
 		<module>consultingroom-dashboard-service</module>
 		<module>consultingroom-service</module>
 		<module>maintenance-alerts-service</module>
+		<module>auth-service</module>
 	</modules>
 
 	<dependencies>
