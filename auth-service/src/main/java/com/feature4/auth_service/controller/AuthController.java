@@ -11,7 +11,7 @@ import com.feature4.auth_service.repository.RolRepository;
 import com.feature4.auth_service.repository.UsuarioRepository;
 import com.feature4.auth_service.security.jwt.JwtTokenUtil;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,21 +28,18 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
+@AllArgsConstructor
 public class AuthController {
 
-    @Autowired
+
     private AuthenticationManager authenticationManager;
 
-    @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
     private RolRepository rolRepository;
 
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/login")

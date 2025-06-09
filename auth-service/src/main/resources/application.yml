@@ -23,3 +23,10 @@ server:
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
+
+# Configuración JWT
+jwt:
+  jwtSecret: tu_clave_secreta_muy_larga_y_segura_para_jwt_tokens_idealmente_mas_de_256_bits
+  jwtExpirationMs: 86400000
+app:
+  jwtExpirationMs: 86400000
