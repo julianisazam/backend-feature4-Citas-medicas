@@ -1,7 +1,8 @@
 FROM maven:3.8-openjdk-17 as builder
 WORKDIR /app
 COPY . /app
-RUN mvn clean package -DskipTests
+# Construir sin la dependencia del POM padre
+RUN mvn clean package -DskipTests -Dspring.boot.version=3.5.0 -Dmaven.test.skip=true
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
