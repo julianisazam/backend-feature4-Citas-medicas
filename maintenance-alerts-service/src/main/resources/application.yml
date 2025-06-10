@@ -35,3 +35,6 @@ server:
     include-binding-errors: always
     include-stacktrace: never
     include-exception: false
+
+app:
+  jwtSecret: ${JWT_SECRET}
