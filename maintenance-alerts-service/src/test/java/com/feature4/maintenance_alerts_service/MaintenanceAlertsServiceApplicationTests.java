@@ -8,6 +8,7 @@ class MaintenanceAlertsServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Test automático generado por SpringBoot para la carga correcta de la aplicación.
 	}
 
 }

@@ -3,15 +3,17 @@ package com.feature4.auth_service.config;
 
 import com.feature4.auth_service.model.Rol;
 import com.feature4.auth_service.repository.RolRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InitRolesData implements CommandLineRunner {
 
-    @Autowired
     private RolRepository rolRepository;
+
+    public InitRolesData(RolRepository rolRepository) {
+        this.rolRepository = rolRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {

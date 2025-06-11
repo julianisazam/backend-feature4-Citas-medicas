@@ -1,7 +1,6 @@
 package com.feature4.consultingroom_service.controller;
 
 import com.feature4.consultingroom_service.dto.ConsultorioResponseDTO;
-import com.feature4.consultingroom_service.model.Consultorio;
 import com.feature4.consultingroom_service.service.ConsultorioService;
 import lombok.AllArgsConstructor;
 import org.springframework.graphql.data.method.annotation.Argument;

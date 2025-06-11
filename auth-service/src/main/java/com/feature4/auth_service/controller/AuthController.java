@@ -43,7 +43,7 @@ public class AuthController {
     private JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -65,7 +65,7 @@ public class AuthController {
     }
 
     @PostMapping("/registro")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
+    public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
         if (usuarioRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: El nombre de usuario ya existe"));
         }
@@ -85,19 +85,19 @@ public class AuthController {
 
         if (strRoles == null) {
             Rol userRole = rolRepository.findByNombre(Rol.RolNombre.ROLE_USER)
-                    .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+                    .orElseThrow(() -> new RuntimeException("Error: Usuario no encontrado."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
                         Rol adminRole = rolRepository.findByNombre(Rol.RolNombre.ROLE_ADMIN)
-                                .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+                                .orElseThrow(() -> new RuntimeException("Error: usuario con rol de Administrador no encontrado."));
                         roles.add(adminRole);
                         break;
                     case "doctor":
                         Rol docRole = rolRepository.findByNombre(Rol.RolNombre.ROLE_DOCTOR)
-                                .orElseThrow(() -> new RuntimeException("Error: Rol no encontrado."));
+                                .orElseThrow(() -> new RuntimeException("Error: usuario con rol de Doctor no encontrado."));
                         roles.add(docRole);
                         break;
                     default:

@@ -36,7 +36,7 @@ public class ConsultorioService {
                     consultorio.getSedeId().getNombre() : "";
 
             if (consultorio.getSedeId().getCiudad() != null) {
-                ciudadNombre = consultorio.getSedeId().getCiudad().getNombre_ciudad();
+                ciudadNombre = consultorio.getSedeId().getCiudad().getNombreCiudad();
             }
         }
 
@@ -50,19 +50,12 @@ public class ConsultorioService {
         );
     }
 
-    private Consultorio toEntity(CreateConsultorioDto consultorioDto) {
-        Consultorio nuevoConsultorio = new Consultorio();
-        nuevoConsultorio.setNumeroConsultorio(consultorioDto.numeroConsultorio());
-
-        return nuevoConsultorio;
-    }
-
     public List<ConsultorioResponseDTO> getAllConsultorios() {
         List<Consultorio> consultorios = consultorioRepository.findAllWithRelations();
 
         return consultorios.stream()
                 .map(this::toResponseDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public ConsultorioResponseDTO getConsultorioById(Long id) {

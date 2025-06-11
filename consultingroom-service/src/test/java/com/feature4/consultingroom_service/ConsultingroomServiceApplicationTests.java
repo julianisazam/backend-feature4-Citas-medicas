@@ -8,6 +8,7 @@ class ConsultingroomServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Prueba automática generada por SpringBoot para la carga correcta de la aplicación.
 	}
 
 }
