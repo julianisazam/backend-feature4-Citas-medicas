@@ -30,3 +30,5 @@ server:
 
 app:
   jwtSecret: ${JWT_SECRET}
+  cors:
+    allowed-origins: "http://localhost:3000"

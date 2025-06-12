@@ -30,3 +30,5 @@ app:
   jwtSecret: ${JWT_SECRET}
   api:
     key: "tu-api-key-secreta-compartida-entre-microservicios"
+  cors:
+    allowed-origins: "http://localhost:3000"
