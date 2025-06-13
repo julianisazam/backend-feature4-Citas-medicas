@@ -7,9 +7,9 @@ spring:
       enabled: true
     path: /graphql
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/feature4
+    username:  postgres
+    password: root
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -29,6 +29,6 @@ server:
     include-exception: false
 
 app:
-  jwtSecret: ${JWT_SECRET}
+  jwtSecret: ${JWT_SECRET:dummysecret}
   cors:
     allowed-origins: "http://localhost:3000"

@@ -3,9 +3,9 @@ spring:
     path match:
       matching-strategy: ant_path_matcher
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://localhost:5432/feature4
+    username:  postgres
+    password: root
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -27,7 +27,7 @@ server:
 
 app:
   jwtExpirationMs: 86400000
-  jwtSecret: ${JWT_SECRET}
+  jwtSecret: ${JWT_SECRET:dummysecret}
   api:
     key: "tu-api-key-secreta-compartida-entre-microservicios"
   cors:
