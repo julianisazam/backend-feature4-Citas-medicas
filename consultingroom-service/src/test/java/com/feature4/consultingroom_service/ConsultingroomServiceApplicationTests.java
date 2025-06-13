@@ -1,9 +1,11 @@
 package com.feature4.consultingroom_service;
 
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest; 
+import org.springframework.test.context.ActiveProfiles;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@DataJpaTest 
+@ActiveProfiles("test")
 class ConsultingroomServiceApplicationTests {
 
 	@Test
